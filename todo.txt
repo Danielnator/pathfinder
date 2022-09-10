@@ -1,0 +1,46 @@
+Next:
+
+- BFS
+- Visited Node Animation
+
+
+- Simple help Dialog
+
+======================================
+
+- Good Model&Representation of Fields
+    --> Only one Field Component?! (add functions which modify css classes based on props)
+
+- Add Algorithms
+- "Start" Button
+
+
+- No Path found edge case
+
+
+- Set speed Option
+
+- Fine tune design
+
+- Button "Generate Maze"
+
+- Tutorial/Help
+
+- Responsivness
+- Typescript Types
+- Nicer Animations
+
+
+Refactor:
+- Refactor Header CSS and HTML
+- recursive Maze generation
+
+
+Fixes:
+- Uneven num of Rows/Cols so maze generation is smoother
+
+
+
+
+Optional fancy ideas:
+- Portals
