@@ -1,6 +1,8 @@
 import { EndField } from "../Fields/EndField";
 import { FreeField } from "../Fields/FreeField";
+import { PathField } from "../Fields/PathField";
 import { StartField } from "../Fields/StartField";
+import { VisitedField } from "../Fields/VisitedField";
 import { WallField } from "../Fields/WallField";
 import styles from "./Grid.module.css";
 
@@ -59,22 +61,27 @@ const Grid = (props: GridProps) => {
         <tbody>
           {props.grid.map((row, index) => (
             <tr key={`row-${index}`} style={{ height: "5%" }}>
-              {row.map((e, col) => (
-                <td key={`node-${col}`} className={styles.gridItem}>
-                  {e.type === "start" && <StartField element={e} />}
-                  {e.type === "end" && <EndField element={e} />}
-                  {e.type === "wall" && (
-                    <WallField element={e} removeWall={removeWall} />
-                  )}
-                  {e.type === "free" && (
+              {row.map((e, col) => {
+                if (e.type === "start") {
+                  return <StartField element={e} />;
+                } else if (e.type === "end") {
+                  return <EndField element={e} />;
+                } else if (e.type === "wall") {
+                  return <WallField element={e} removeWall={removeWall} />;
+                } else if (e.type === "visited") {
+                  return <VisitedField element={e} />;
+                } else if (e.type === "path") {
+                  return <PathField element={e} />;
+                } else {
+                  return (
                     <FreeField
                       onDropElement={onDropElement}
                       element={e}
                       setWall={setWall}
                     />
-                  )}
-                </td>
-              ))}
+                  );
+                }
+              })}
             </tr>
           ))}
         </tbody>

@@ -1,4 +1,8 @@
-const FreeField = (props: any) => {
+import { memo } from "react";
+import fieldPropsAreEqual from "../../utils/fieldPropsAreEqual";
+import styles from "./Fields.module.css";
+
+const FreeField = memo((props: any) => {
   const allowDrop = (event: any) => {
     event.preventDefault();
   };
@@ -10,13 +14,16 @@ const FreeField = (props: any) => {
   };
 
   return (
-    <div
-      style={{ height: "100%", width: "100%" }}
+    <td
+      key={`node-${props.element.id}`}
+      className={`${styles.gridItem}`}
       onDrop={drop}
       onDragOver={allowDrop}
       onClick={() => props.setWall(props.element)}
-    ></div>
+    >
+      <div style={{ height: "100%", width: "100%" }}></div>
+    </td>
   );
-};
+}, fieldPropsAreEqual);
 
 export { FreeField };

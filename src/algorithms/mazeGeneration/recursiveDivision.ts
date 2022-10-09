@@ -1,7 +1,13 @@
+import { sleep } from "../../utils/sleep";
+
 const HORIZONTAL = 0;
 const VERTICAL = 1;
 
-const generateRecursiveDivisionMaze = async (isBlocking: any, setGrid: any) => {
+const generateRecursiveDivisionMaze = async (
+  isBlocking: any,
+  setGrid: any,
+  speed: string
+) => {
   if (isBlocking.current) {
     return;
   }
@@ -16,9 +22,7 @@ const generateRecursiveDivisionMaze = async (isBlocking: any, setGrid: any) => {
       }
       return newElems;
     });
-    if (j % 2 === 0) {
-      await new Promise((r) => setTimeout(r, 20));
-    }
+    await sleep(speed);
   }
   for (let i = 0; i < 20; i++) {
     setGrid((prev: any) => {
@@ -28,9 +32,7 @@ const generateRecursiveDivisionMaze = async (isBlocking: any, setGrid: any) => {
       }
       return newElems;
     });
-    if (i % 2 === 0) {
-      await new Promise((r) => setTimeout(r, 20));
-    }
+    await sleep(speed);
   }
   for (let j = 0; j < 50; j++) {
     setGrid((prev: any) => {
@@ -40,9 +42,7 @@ const generateRecursiveDivisionMaze = async (isBlocking: any, setGrid: any) => {
       }
       return newElems;
     });
-    if (j % 2 === 0) {
-      await new Promise((r) => setTimeout(r, 20));
-    }
+    await sleep(speed);
   }
   for (let i = 0; i < 20; i++) {
     setGrid((prev: any) => {
@@ -52,12 +52,10 @@ const generateRecursiveDivisionMaze = async (isBlocking: any, setGrid: any) => {
       }
       return newElems;
     });
-    if (i % 2 === 0) {
-      await new Promise((r) => setTimeout(r, 20));
-    }
+    await sleep(speed);
   }
 
-  await divideGrid(setGrid, 1, 19, 1, 49);
+  await divideGrid(setGrid, 1, 19, 1, 49, speed);
 
   isBlocking.current = false;
 };
@@ -67,7 +65,8 @@ const divideGrid = async (
   minRow: number,
   maxRow: number,
   minCol: number,
-  maxCol: number
+  maxCol: number,
+  speed: string
 ) => {
   if (maxRow - minRow <= 1 || maxCol - minCol <= 1) {
     return;
@@ -110,12 +109,10 @@ const divideGrid = async (
         }
         return newElems;
       });
-      if (j % 3 === 0) {
-        await new Promise((r) => setTimeout(r, 100));
-      }
+      await sleep(speed);
     }
-    await divideGrid(setGrid, minRow, rowNum, minCol, maxCol);
-    await divideGrid(setGrid, rowNum + 1, maxRow, minCol, maxCol);
+    await divideGrid(setGrid, minRow, rowNum, minCol, maxCol, speed);
+    await divideGrid(setGrid, rowNum + 1, maxRow, minCol, maxCol, speed);
   } else if (orientation === VERTICAL) {
     const colOptions = [];
     for (let idx = minCol; idx < maxCol; idx++) {
@@ -144,12 +141,10 @@ const divideGrid = async (
         }
         return newElems;
       });
-      if (i % 3 === 0) {
-        await new Promise((r) => setTimeout(r, 100));
-      }
+      await sleep(speed);
     }
-    await divideGrid(setGrid, minRow, maxRow, minCol, colNum);
-    await divideGrid(setGrid, minRow, maxRow, colNum + 1, maxCol);
+    await divideGrid(setGrid, minRow, maxRow, minCol, colNum, speed);
+    await divideGrid(setGrid, minRow, maxRow, colNum + 1, maxCol, speed);
   }
 };
 

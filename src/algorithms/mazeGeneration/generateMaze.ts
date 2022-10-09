@@ -1,14 +1,17 @@
 import { generateRandomMaze } from "./randomMaze";
 import { generateRecursiveDivisionMaze } from "./recursiveDivision";
 
-const generateMaze = (algorithm: string, isBlocking: any, setGrid: any) => {
-  console.log("CALLING GNERATE MAZE: ", algorithm, isBlocking, setGrid);
-
+const generateMaze = (
+  algorithm: string,
+  isBlocking: any,
+  setGrid: any,
+  speed: string
+) => {
   if (algorithm === "random") {
     generateRandomMaze(isBlocking, setGrid);
     return;
   } else if (algorithm === "recursive") {
-    generateRecursiveDivisionMaze(isBlocking, setGrid);
+    generateRecursiveDivisionMaze(isBlocking, setGrid, speed);
   }
 };
 

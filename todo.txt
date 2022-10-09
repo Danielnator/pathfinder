@@ -1,44 +1,44 @@
 Next:
 
-- BFS
-- Visited Node Animation
-
+- Header refactor
 
 - Simple help Dialog
+
+- Set speed Option
 
 ======================================
 
 - Good Model&Representation of Fields
     --> Only one Field Component?! (add functions which modify css classes based on props)
+    --> Let grid be object? (easier access by id)
 
-- Add Algorithms
-- "Start" Button
+
+- Dijsktra
+- A* 
 
 
 - No Path found edge case
+- User feedback (e.g. click on viz when no algo selected => show Toast)
 
 
-- Set speed Option
 
-- Fine tune design
+- Fine tune design + animations
 
-- Button "Generate Maze"
-
-- Tutorial/Help
+- Better Tutorial/Help
 
 - Responsivness
 - Typescript Types
-- Nicer Animations
 
 
 Refactor:
 - Refactor Header CSS and HTML
 - recursive Maze generation
+- Set Constants ROWS, COLUMNS for num of r/c
 
 
 Fixes:
 - Uneven num of Rows/Cols so maze generation is smoother
-
+- performance?? Way to avoid promises and rerenders of whole board?
 
 
 

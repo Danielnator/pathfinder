@@ -4,12 +4,18 @@ import styles from "./Header.module.css";
 const Header = (props: any) => {
   const [openDropdown, setOpenDropdown] = useState("none");
 
+  console.log("HEADER RENDERING!");
+
   const onClickAlgo = () => {
     setOpenDropdown((prev) => (prev === "algo" ? "none" : "algo"));
   };
 
   const onClickSpeed = () => {
     setOpenDropdown((prev) => (prev === "speed" ? "none" : "speed"));
+  };
+
+  const onClickSelectMaze = () => {
+    setOpenDropdown((prev) => (prev === "maze" ? "none" : "maze"));
   };
 
   const onClickClear = () => {
@@ -20,8 +26,8 @@ const Header = (props: any) => {
     props.generateMaze(mode);
   };
 
-  const onClickSelectMaze = () => {
-    setOpenDropdown((prev) => (prev === "maze" ? "none" : "maze"));
+  const onClickStart = () => {
+    props.onStartVisualization();
   };
 
   return (
@@ -139,7 +145,9 @@ const Header = (props: any) => {
 
         {/* Start Pathfinding Button */}
         <div className={styles.startButtonContainer}>
-          <div className={styles.button}>Start Visualization</div>
+          <div className={styles.button} onClick={onClickStart}>
+            Start Visualization
+          </div>
         </div>
 
         {/* Clear Button */}

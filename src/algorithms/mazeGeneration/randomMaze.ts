@@ -1,3 +1,5 @@
+import { sleep } from "../../utils/sleep";
+
 const generateRandomMaze = async (isBlocking: any, setGrid: any) => {
   if (isBlocking.current) {
     return;
@@ -14,9 +16,6 @@ const generateRandomMaze = async (isBlocking: any, setGrid: any) => {
       }
       return newElems;
     });
-    if (idx % 2 === 0) {
-      await new Promise((r) => setTimeout(r, 1));
-    }
   }
   isBlocking.current = false;
 };

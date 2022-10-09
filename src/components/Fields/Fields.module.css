@@ -1,14 +1,34 @@
-.wall {
-  width: 108%;
-  height: 108%;
-  border: 1px solid black;
-  background-color: black;
-  animation-name: example;
-  animation-duration: 0.3s;
-  border-radius: 2px;
+.gridItem {
+  border: 0.3px solid rgba(193, 193, 193, 0.8);
+  border-collapse: collapse;
+  width: 2%;
 }
 
-@keyframes example {
+.wall {
+  width: 2%;
+  border: 1px solid black;
+  background-color: black;
+  animation-name: asd;
+  animation-duration: 2s;
+}
+
+@keyframes wall {
+  from {
+    border-color: white;
+    background-color: white;
+  }
+  to {
+    border-color: black;
+    background-color: black;
+  }
+}
+
+.wallFilling {
+  animation-name: wallFilling;
+  animation-duration: 0.3s;
+}
+
+@keyframes wallFilling {
   from {
     background-color: grey;
     height: 20%;
@@ -17,6 +37,56 @@
   }
   to {
     background-color: black;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+.visited {
+  width: 108%;
+  height: 108%;
+  border: 1px solid #21fcea;
+  background-color: #21fcea;
+  animation-name: visited;
+  animation-duration: 1.5s;
+  border-radius: 2px;
+}
+
+@keyframes visited {
+  from {
+    background-color: #07ff03;
+    height: 20%;
+    width: 20%;
+    margin: 40%;
+  }
+  to {
+    background-color: #21fcea;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+.path {
+  width: 108%;
+  height: 108%;
+  border: 1px solid #ffff03;
+  background-color: #ffff03;
+  animation-name: path;
+  animation-duration: 0.8s;
+  border-radius: 2px;
+}
+
+@keyframes path {
+  from {
+    background-color: #ffff03;
+    height: 20%;
+    width: 20%;
+    margin: 40%;
+  }
+  to {
+    background-color: #ffff03;
     height: 100%;
     width: 100%;
     margin: 0px;
